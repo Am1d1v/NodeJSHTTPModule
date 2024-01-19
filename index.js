@@ -1,5 +1,7 @@
 const http = require('http');
 
+const PORT = 1000;
+
 // Create Server
 const server = http.createServer((req, res) => {
     //console.log(res.statusCode);
@@ -8,4 +10,6 @@ const server = http.createServer((req, res) => {
     res.end();
 });
 
-server.listen(1000);
+server.listen(PORT, () => {
+    console.log(`Server was launched on port ${PORT} `);
+});
