@@ -24,17 +24,24 @@ const getComments = (req, res) => {
 // Post comment
 const postComment = (req, res) => {
     let comment = '';
+    //console.log(req.headers)
 
-    req.on('data', (chunk) => {
-        comment += chunk;
-    })
+    // Data must have JSON formate
+    if(req.headers['content-type'] === 'application/json'){
 
-    req.on('end', () => {
-        console.log(comment);
-        res.statusCode = 200;
-        return res.end('Comment data was received');
-    })
-
+        req.on('data', (chunk) => {
+            comment += chunk;
+        })
+    
+        req.on('end', () => {
+            comments.push(JSON.parse(comment));
+            res.statusCode = 200;
+            return res.end('Comment data was received');
+        })
+    } else {
+        res.statusCode = 400;
+        return res.end('Data must have JSON formate');
+    }
 }; 
 
 const wrongURL = (req, res) => {
