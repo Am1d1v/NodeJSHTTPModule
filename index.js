@@ -1,5 +1,5 @@
 const http = require('http');
-const {getHTML, getText, getComments, wrongURL} = require('./handlers');
+const {getHTML, getText, getComments, postComment, wrongURL} = require('./handlers');
 
 // Server Port
 const PORT = 1000;
@@ -18,9 +18,14 @@ const server = http.createServer((req, res) => {
         return getText(req, res);
     }
 
-    // JSON URL-Path
+    // Comments GET Method
     if(req.method === 'GET' && req.url === '/comments'){
         return getComments(req, res);
+    }
+
+    // Comments POST Method
+    if(req.method === 'POST' && req.url === '/comments'){
+        return postComment(req, res);
     }
 
     // Wrong URL Warning and statusCode 404

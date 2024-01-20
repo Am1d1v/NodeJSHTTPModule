@@ -14,10 +14,27 @@ const getText = (req, res) => {
     return res.end();
 }; 
 
+// Get all comments
 const getComments = (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     return res.end(JSON.stringify(comments));
+}; 
+
+// Post comment
+const postComment = (req, res) => {
+    let comment = '';
+
+    req.on('data', (chunk) => {
+        comment += chunk;
+    })
+
+    req.on('end', () => {
+        console.log(comment);
+        res.statusCode = 200;
+        return res.end('Comment data was received');
+    })
+
 }; 
 
 const wrongURL = (req, res) => {
@@ -31,5 +48,6 @@ module.exports = {
     getHTML,
     getText,
     getComments,
+    postComment,
     wrongURL
 };
