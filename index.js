@@ -4,19 +4,19 @@ const PORT = 1000;
 
 const comments = [
     {
-      id: 100,
-      text: 'First',
-      author: 'AuthorName1'  
+      "id": 100,
+      "text": 'First',
+      "author": 'AuthorName1'  
     },
     {
-      id: 200,
-      text: 'Second',
-      author: 'AuthorName2'  
+      "id": 200,
+      "text": 'Second',
+      "author": 'AuthorName2'  
     },
     {
-      id: 300,
-      text: 'Third',
-      author: 'AuthorName3'  
+      "id": 300,
+      "text": 'Third',
+      "author": 'AuthorName3'  
     },
 ];
 
@@ -48,8 +48,9 @@ const server = http.createServer((req, res) => {
         return res.end(JSON.stringify(comments));
     }
 
-    // Wrong URL Warning
+    // Wrong URL Warning and statusCode 404
     if(req.url !== '/main'){
+        res.statusCode = 404;
         res.setHeader('Content-Type', 'text/html');
         res.write(`<h1> Wrong URL </h1>`);
         return res.end();
