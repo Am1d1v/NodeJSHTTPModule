@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeJS HTTP Module</title>
+</head>
+<body>
+
+    <h1>Add a new comment</h1>
+    <form action="/comments" method="post">
+        <label for="id">CommentID:</label>
+        <input type="number" name="id" id="id">
+
+        <label for="author">Author Name:</label>
+        <input type="text" name="author" id="author">
+
+        <label for="text">Text:</label>
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+    
+</body>
+</html>

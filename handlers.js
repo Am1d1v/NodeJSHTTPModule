@@ -1,5 +1,9 @@
 const comments = require('./data');
 
+const getHome = (req, res) => {
+    
+};
+
 const getHTML = (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
@@ -44,6 +48,7 @@ const postComment = (req, res) => {
     }
 }; 
 
+// Wrong URL Warning
 const wrongURL = (req, res) => {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html');
@@ -56,5 +61,6 @@ module.exports = {
     getText,
     getComments,
     postComment,
-    wrongURL
+    wrongURL,
+    getHome
 };

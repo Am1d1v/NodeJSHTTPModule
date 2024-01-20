@@ -1,5 +1,5 @@
 const http = require('http');
-const {getHTML, getText, getComments, postComment, wrongURL} = require('./handlers');
+const {getHTML, getText, getComments, postComment, wrongURL, getHome} = require('./handlers');
 
 // Server Port
 const PORT = 1000;
@@ -7,6 +7,10 @@ const PORT = 1000;
 
 // Create Server
 const server = http.createServer((req, res) => {
+
+    if(req.method = 'GET' || req.url === '/'){
+        return getHome(req, res)
+    }
 
     // Main Page URL-Path
     if(req.url === '/main' || req.url === '/'){
